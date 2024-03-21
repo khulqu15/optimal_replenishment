@@ -26,7 +26,7 @@ function number2_td()
     xi = x(2);
 
     fprintf('TD = %.4f\n', TD);
-    fprintf('xi = %.4f\n', xi);
+    fprintf('xi = %.5f\n', xi);
 end
 
 function F = dTUCdTD(TD, xi, D, cp, cb, ch, co, theta, beta, alpha, k, A, delta, TP, b)

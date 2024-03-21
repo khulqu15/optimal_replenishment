@@ -18,7 +18,9 @@ function optimized_solution()
     xi = 0.0015;
     x0 = 0.00;
 
-    options = optimoptions('fmincon', 'Algorithm', 'sqp', 'Display', 'iter', 'OptimalityTolerance', 1e-10, 'StepTolerance', 1e-10);
+    options = optimoptions('fmincon', ...
+        'Algorithm', 'sqp', ... % Mengatur algoritma yang digunakan oleh fmincon. 'sqp' berarti Sequential Quadratic Programming, yang efektif untuk non-linear optimization.
+        'Display', 'iter'); % Mengatur tingkat tampilan output. 'iter' akan menampilkan informasi setiap iterasi tentang proses optimasi.
 
     TD = fmincon(@(x)dTUCdTD(x(1), xi, D, cp, cb, ch, co, theta, beta, alpha, k, A, delta, TP, b), x0, [], [], [], [], lb, ub, [], options);
 
