@@ -1,9 +1,9 @@
-function number2_td()
+function optimized_solution()
     % Definisi parameter masalah
     D = 100 * 10^6;
     cp = 0.005;
     lb = [0.222, 0.0015];
-    ub = [1, 1];
+    ub = [1, 2];
     cb = 0.0315;
     ch = 0.002;
     co = 5000;
@@ -15,15 +15,12 @@ function number2_td()
     delta = 850;
     TP = 0.0719;
     b = 69.4;
-
-    x0 = [0.00, 0.00];
+    xi = 0.0015;
+    x0 = 0.00;
 
     options = optimoptions('fmincon', 'Algorithm', 'sqp', 'Display', 'iter', 'OptimalityTolerance', 1e-10, 'StepTolerance', 1e-10);
 
-    [x, ~] = fmincon(@(x)dTUCdTD(x(1), x(2), D, cp, cb, ch, co, theta, beta, alpha, k, A, delta, TP, b), x0, [], [], [], [], lb, ub, [], options);
-
-    TD = x(1);
-    xi = x(2);
+    TD = fmincon(@(x)dTUCdTD(x(1), xi, D, cp, cb, ch, co, theta, beta, alpha, k, A, delta, TP, b), x0, [], [], [], [], lb, ub, [], options);
 
     fprintf('TD = %.4f\n', TD);
     fprintf('xi = %.4f\n', xi);
