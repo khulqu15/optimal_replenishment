@@ -30,9 +30,9 @@ function optimization1()
         z = (PC + BC + HC + OC) / Td;
     end
     
-    function F = systemOfEquations(TP, cp, D, theta, b, alpha, k, cb, beta, A, ch, co)
+   function F = systemOfEquations(TP, cp, D, theta, b, alpha, k, cb, beta, A, ch, co)
     F = cp / (1 + b) * (alpha * (1 + b * exp(-k * TP)) - b * k * exp(-k * TP)) + ...
-        cb / (A * beta) * (alpha * (1 + b * exp(-k * TP)) * (exp(beta * TP) -xcorr 1)) - ...
+        cb / (A * beta) * (alpha * (1 + b * exp(-k * TP)) * (exp(beta * TP) - 1)) - ...
         (b * k * exp(-k * TP) * (exp(beta * TP) - 1) + beta * (1 + b * exp(-k * TP)) * exp(beta * TP));
-    end
+   end
 end
